@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+  <view class = "uploader">
+    <button bindtap = "test">测试</button>
+    <button bindtap = "testAdd">添加数据</button>
+    <button bindtap = "testGet">获取数据</button>
+    <button bindtap = "testUpdate">update</button>
+    <button bindtap = "testRemove">remove</button>
+    <button bindtap = "testWhere">条件查询</button>
+    <button bindtap = "testOrderBy">排序</button>
+    <button bindtap = "testSkipAndLimit">跳过skip条 查limit条</button>
+    <button bindtap = "testField">显示几条数据</button>
+    <button bindtap = "testJpg">上传图片</button>
+  </view>
+</view>
