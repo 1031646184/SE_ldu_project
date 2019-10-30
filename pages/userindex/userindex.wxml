@@ -1,0 +1,28 @@
+<!--pages/userindex/userindex.wxml-->
+<view class='top'>
+    <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>
+    通知
+    </view>
+
+    <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent'>
+    任务
+    </view>
+</view>
+
+<swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
+  <swiper-item><view class='swiper_con'>welcome come to 通知</view></swiper-item>
+  <swiper-item><view class='swiper_con'>welcome come to 任务管理</view></swiper-item>
+</swiper>
+
+
+
+<view class="ui_buttom"> <!--底部导航栏 -->
+  <i-tab-bar current="{{ current }}" bindchange="handleChange">
+      <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="Home"></i-tab-bar-item>
+      <i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" count="0" title="Notice"></i-tab-bar-item>
+      <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" dot title="My"></i-tab-bar-item>
+  </i-tab-bar>
+</view>
+
+
+
