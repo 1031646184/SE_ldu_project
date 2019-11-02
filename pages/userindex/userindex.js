@@ -7,18 +7,16 @@ Page({
   },
 
   handleChange({ detail }) {
-    this.setData({
-      current: detail.key
-    });
+  
   },
-  //获取当前滑块的index
+  //获取当前滑块的index-----顶部选项卡
   bindchange: function (e) {
     const that = this;
     that.setData({
       currentData: e.detail.current
     })
   },
-  //点击切换，滑块index赋值
+  //点击切换，滑块index赋值-----顶部选项卡
   checkCurrent: function (e) {
     const that = this;
 
@@ -28,6 +26,27 @@ Page({
 
       that.setData({
         currentData: e.target.dataset.current
+      })
+    }
+  },
+
+  //获取当前滑块的index000002-----二级选项卡
+  bindchange02: function (e) {
+    const that = this;
+    that.setData({
+      currentData02: e.detail.current
+    })
+  },
+  //点击切换，滑块index赋值000002-----二级选项卡
+  checkCurrent02: function (e) {
+    const that = this;
+
+    if (that.data.currentData02 === e.target.dataset.current) {
+      return false;
+    } else {
+
+      that.setData({
+        currentData02: e.target.dataset.current
       })
     }
   },

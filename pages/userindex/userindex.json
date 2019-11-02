@@ -6,6 +6,9 @@
     "i-panel": "../../dist/panel/index",
 
     "i-tabs": "../../dist/tabs/index",
-    "i-tab": "../../dist/tab/index"
+    "i-tab": "../../dist/tab/index",
+
+    "i-row": "../../dist/row/index",
+    "i-col": "../../dist/col/index"
   }
 }
