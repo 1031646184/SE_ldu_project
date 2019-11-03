@@ -1,0 +1,8 @@
+<!--pages/tree/tree.wxml-->
+<view >
+    <button bindtap="show">树</button>
+    <button bindtap="shownew">新建树</button>
+    <button bindtap="showadd">添加节点</button>
+    <button bindtap="showdel">删除</button>
+    <button bindtap="showpushAllNews">向num的下级所有子节点推送消息</button>
+</view>
