@@ -1,0 +1,23 @@
+{
+  "name": "se_ldu_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "vant-weapp": "^0.5.23"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1031646184/SE_ldu_project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1031646184/SE_ldu_project/issues"
+  },
+  "homepage": "https://github.com/1031646184/SE_ldu_project#readme"
+}

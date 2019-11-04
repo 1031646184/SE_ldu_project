@@ -1,6 +1,5 @@
 <!--pages/userindex/userindex.wxml-->
 
-<!-- 顶部选项卡-->
 <view class='top'>
     <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>
     通知
@@ -36,13 +35,14 @@
 </swiper>
 
 
-<!--底部导航栏 -->
-<view class="ui_buttom"> 
-  <i-tab-bar current="{{ current }}" bindchange="handleChange">
-      <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="Home"></i-tab-bar-item>
-      <i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" count="0" title="Notice"></i-tab-bar-item>
-      <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" dot title="My"></i-tab-bar-item>
-  </i-tab-bar>
-</view>
+
+
+
+<!--底部导航栏 添加dot属性true显示红点 -->
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item icon="home-o">标签</van-tabbar-item>
+  <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
+  <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
+</van-tabbar>
 
 

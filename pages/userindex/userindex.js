@@ -2,12 +2,20 @@
 Page({
 
   data: {
-    current: 'tab1',
-    current_scroll: 'tab1'
+    active:1
+  },
+  //底部标签栏
+  onChange(event) {
+    this.setData({
+      active: event.detail
+    });
+   // console.log(event.detail);
   },
 
   handleChange({ detail }) {
-  
+    this.setData({
+       current: detail.key
+    });
   },
   //获取当前滑块的index-----顶部选项卡
   bindchange: function (e) {

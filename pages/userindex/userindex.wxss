@@ -1,16 +1,11 @@
 /* pages/userindex/userindex.wxss */
-.top{
-  margin-top: 0px;
-}
-.ui_buttom {
-  margin-top: 400px;
-}
 
 .tab {
+  top:0px;
   float: left;
   width: 50%;
   text-align: center;
-  padding: 10rpx 0;
+  padding: 5rpx 0;
 }
  
 .topTabSwiper {
@@ -40,3 +35,5 @@
   height: 100%;
   padding: 80rpx 0;
 }
+
+
