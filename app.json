@@ -1,8 +1,10 @@
 {
+  
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/userindex/userindex"
+    "pages/userindex/userindex",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -10,5 +12,10 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+
+  "usingComponents": {
+    "van-tabbar": "../../dist/tabbar/index",
+    "van-tabbar-item": "../../dist/tabbar-item/index"
+  }
 }

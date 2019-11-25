@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -23,7 +23,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.0",
-	"appid": "wx160fad2b3d38c570",
+	"appid": "wxbbd95d6feb106ae4",
 	"projectname": "2019SE",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -59,6 +59,27 @@
 					"id": -1,
 					"name": "pages/userindex/userindex",
 					"pathName": "pages/userindex/userindex",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/test/test",
+					"pathName": "pages/test/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
 					"scene": null
 				}
 			]

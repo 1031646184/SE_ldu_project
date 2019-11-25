@@ -1,9 +1,12 @@
 {
   "usingComponents": {
-      "van-tabbar": "../../dist/tabbar/index",
-      "van-tabbar-item": "../../dist/tabbar-item/index",
 
       "van-tab": "../../dist/tab/index",
-      "van-tabs": "../../dist/tabs/index"
+      "van-tabs": "../../dist/tabs/index",
+      "van-panel": "../../dist/panel/index",
+      "van-button": "../../dist/button/index",
+      "van-sticky": "../../dist/sticky/index",
+      "van-popup": "../../dist/popup/index",
+      "van-divider": "../../dist/divider/index"
   }
 }

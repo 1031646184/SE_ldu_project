@@ -1,48 +1,30 @@
-<!--pages/userindex/userindex.wxml-->
 
-<view class='top'>
-    <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>
-    通知
-    </view>
-  
-    <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent'>
-    管理
-    </view>
-</view>
-<!--顶部选项卡切换页面-->
-<swiper current="{{currentData}}" class='swiper' style="height:300px;" duration="300" bindchange="bindchange">
-  <swiper-item><view class='swiper_con'>welcome come to 通知</view></swiper-item>
+<van-tabs  bind:click="onClick" color = "#5555DB" sticky = "{{true}}">  
 
-  <swiper-item ><view class='swiper_con'>
-    <!-- 二级选项卡-->
-    <view class='top'>
-      <view class='tab  {{currentData02 == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent02'>
-        待办任务
-      </view>
-      <view class='tab  {{currentData02 == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent02'>
-        管理已发布通知
-      </view>
-    </view>
-  
-  </view>
-  </swiper-item>
-</swiper>
+  <van-tab title="通知">
+   <van-button size="small" bind:click="onTapAdd" >添加</van-button> 
+    <block wx:for="{{obj}}" wx:key>
+      <van-panel title="{{notice.title}}" desc="{{notice.content}}" status="未读" use-footer-slot>
+        <view slot="footer">
+          <van-button size="small" color = "#5555DB">查看详情</van-button>
+          <van-button size="small" bind:click="onTapDel" >删除</van-button> 
+         </view>
+      </van-panel>
+    </block> 
+   
+  </van-tab>
 
-<!--二级选项卡切换页面-->
-<swiper current="{{currentData02}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange02">
-  <swiper-item><view class='swiper_con'>wwwwwwwww</view></swiper-item>
-  <swiper-item ><view class='swiper_con'>iiiiiiiiiii</view></swiper-item>
-</swiper>
+  <van-tab title="管理">内容 2</van-tab>
 
-
-
-
-
-<!--底部导航栏 添加dot属性true显示红点 -->
-<van-tabbar active="{{ active }}" bind:change="onChange">
-  <van-tabbar-item icon="home-o">标签</van-tabbar-item>
-  <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
+</van-tabs>
+<van-divider contentPosition="center">只有这么多啦！</van-divider>
+<van-tabbar active="{{ active }}" bind:change="onChange" active-color = "#5555DB">
+  <van-tabbar-item icon="wap-home-o" info="3" >
+    主页
+  </van-tabbar-item>
+  <van-tabbar-item icon="comment-o">发送通知</van-tabbar-item>
   <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
 </van-tabbar>
+
 
 
