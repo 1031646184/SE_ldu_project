@@ -105,6 +105,7 @@ var i =0;
 
 
     wx.onSocketMessage(function (res) {
+      this.analysisRes1(res.data)
       console.log(res)
       wx.closeSocket({
 
@@ -117,14 +118,27 @@ var i =0;
     })
   },
 
+  analysisRes1: function () { //解析收到的数据
+    var str = '{ "task1": "{"publisher_id": "001", "title": "title1", "description": "description", "start_date": "2019-11 - 25 11: 45: 11", "end_date": "2019-11 - 25 11: 45: 11", "attachments_id": "attachments_id", "submit_attachments": 11}", "task2": "{"publisher_id": "001", "title": "title1", "description": "description", "start_date": "2019-11 - 25 11: 45: 57", "end_date": "2019-11 - 25 11: 45: 57", "attachments_id": "attachments_id", "submit_attachments": 11}", "task3": "{"publisher_id": "001", "title": "title1", "description": "description", "start_date": "2019-11 - 25 11: 47: 08", "end_date": "2019-11 - 25 11: 47: 08", "attachments_id": "attachments_id", "submit_attachments": 11}" }';
 
+    var st = '{ "bar": "property", "baz": 3 }';
+    var jsObject = JSON.parse(str);    //转换为json对象
+    for (var key in jsObject) {
+      console.log(key); 
+      console.log(jsObject[key]); //json对象的值  
+
+    }  
+   
+
+
+  },
 
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.test1()
+    this.analysisRes1();
   },
 
   /**
