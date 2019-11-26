@@ -4,7 +4,7 @@
   <van-tab title="通知">
    <van-button size="small" bind:click="onTapAdd" >添加</van-button> 
     <block wx:for="{{obj}}" wx:key>
-      <van-panel title="{{notice.title}}" desc="{{notice.content}}" status="未读" use-footer-slot>
+      <van-panel  wx:for="{{notice}}" wx:key wx:for-item="inoc" title="{{inoc.title}}" desc="{{inoc.description}}" status="{{inoc.start_date}}" use-footer-slot>
         <view slot="footer">
           <van-button size="small" color = "#5555DB">查看详情</van-button>
           <van-button size="small" bind:click="onTapDel" >删除</van-button> 

@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/userindex/userindex",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/senMessage/senMessage"
   ],
   "window": {
     "backgroundTextStyle": "light",
