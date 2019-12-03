@@ -1,6 +1,15 @@
 {
   "usingComponents": {
     "van-field": "../../dist/field/index",
-    "van-popup": "../../dist/popup/index"
+    "van-popup": "../../dist/popup/index",
+    "wux-button": "../../wdist/button/index",
+    "wux-popup": "../../wdist/popup/index",
+      "van-cell": "../../dist/cell/index",
+      "van-cell-group": "../../dist/cell-group/index",
+      "van-panel": "../../dist/panel/index",
+      "van-datetime-picker": "../../dist/datetime-picker/index",
+              "wux-cell-group": "../../dist/cell-group/index",
+              "wux-cell": "../../dist/cell/index",
+              "wux-calendar": "../../dist/calendar/index"
   }
 }
