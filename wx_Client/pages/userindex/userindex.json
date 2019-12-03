@@ -7,6 +7,8 @@
       "van-button": "../../dist/button/index",
       "van-sticky": "../../dist/sticky/index",
       "van-popup": "../../dist/popup/index",
-      "van-divider": "../../dist/divider/index"
+      "van-divider": "../../dist/divider/index",
+      "wux-card": "../../wdist/card/index",
+      "wux-wing-blank": "../../wdist/wing-blank/index"
   }
 }

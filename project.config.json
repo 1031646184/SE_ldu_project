@@ -25,10 +25,11 @@
 	"libVersion": "2.9.0",
 	"appid": "wxbbd95d6feb106ae4",
 	"projectname": "2019SE",
+	"cloudfunctionTemplateRoot": "",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
-	"isGameTourist": false,
+	"scripts": {},
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
@@ -45,7 +46,6 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"gamePlugin": {
@@ -53,7 +53,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 0,
 			"list": [
 				{
 					"id": -1,
@@ -81,12 +81,6 @@
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
 					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/senMessage/senMessage",
-					"pathName": "pages/senMessage/senMessage",
 					"scene": null
 				}
 			]

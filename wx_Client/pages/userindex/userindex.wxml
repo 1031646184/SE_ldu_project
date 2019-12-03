@@ -1,20 +1,51 @@
 
 <van-tabs  bind:click="onClick" color = "#5555DB" sticky = "{{true}}">  
 
-  <van-tab title="通知">
-   <van-button size="small" bind:click="onTapAdd" >添加</van-button> 
-    <block wx:for="{{obj}}" wx:key>
-      <van-panel  wx:for="{{notice}}" wx:key wx:for-item="inoc" title="{{inoc.title}}" desc="{{inoc.description}}" status="{{inoc.start_date}}" use-footer-slot>
-        <view slot="footer">
-          <van-button size="small" color = "#5555DB">查看详情</van-button>
-          <van-button size="small" bind:click="onTapDel" >删除</van-button> 
-         </view>
-      </van-panel>
-    </block> 
+  <van-tab title="我接收的通知">
+
+      <wux-wing-blank size="default">
+          <wux-card title="任务1" extra="未读" actions="{{ acceptactions }}" bind:action="onAction">
+            <view   slot="body" >内容不错</view>
+            <view slot="footer">2019-12-02</view>
+          </wux-card>
+      </wux-wing-blank>
+      <van-divider />
+      
    
   </van-tab>
 
-  <van-tab title="管理">内容 2</van-tab>
+  <van-tab title="我发布的通知">
+  
+      <wux-wing-blank size="default">
+          <wux-card title="任务1" extra="已读人数：56/80" actions="{{ actions }}" bind:action="onAction">
+            <view slot="body">卡片内容</view>
+            <view slot="footer">2019-12-02</view>
+          </wux-card>
+      </wux-wing-blank>
+      <van-divider />
+
+      <wux-wing-blank size="default">
+          <wux-card title="任务1" extra="已读人数" actions="{{ actions }}" bind:action="onAction">
+            <view slot="body">卡片内容</view>
+            <view slot="footer">尾部内容</view>
+          </wux-card>
+      </wux-wing-blank>
+      <van-divider />
+
+      <wux-wing-blank size="default">
+          <wux-card title="任务1" extra="已读人数" actions="{{ actions }}" bind:action="onAction">
+            <view slot="body">卡片内容</view>
+            <view slot="footer">尾部内容</view>
+          </wux-card>
+      </wux-wing-blank>
+      <van-divider />
+
+
+
+
+
+  
+  </van-tab>
 
 </van-tabs>
 <van-divider contentPosition="center">只有这么多啦！</van-divider>

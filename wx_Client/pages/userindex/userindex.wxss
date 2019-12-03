@@ -35,5 +35,7 @@
   height: 100%;
   padding: 80rpx 0;
 }
-
+.bg{
+   background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1575305593621&di=76f6153f0a8b1188cace11688c1f6b4f&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F03836775914198da801216a3e75c8ea.jpg");
+}
 

@@ -1,2 +1,37 @@
 <!--pages/senMessage/senMessage.wxml-->
-<text>pages/senMessage/senMessage.wxml</text>
+<van-cell-group>
+
+  <van-field
+    value="{{ username }}"
+    required
+    clearable
+    label="用户名"
+    icon="question-o"
+    placeholder="请输入用户名"
+    bind:click-icon="onClickIcon"
+  />
+
+  <van-field
+    value="{{ message }}"
+    label="留言"
+    type="textarea"
+    placeholder="请输入留言"
+    autosize
+    border="{{ false }}"
+  />
+    <van-field
+    value="{{ username }}"
+    required
+    clearable
+    label="用户名"
+    icon="question-o"
+    placeholder="请输入用户名"
+    bind:click-icon="onClickIcon"
+  />
+  
+</van-cell-group>
+<van-divider />
+<van-cell title="展示弹出层" is-link bind:click="showPopup" />
+
+
+
