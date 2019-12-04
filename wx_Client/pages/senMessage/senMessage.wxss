@@ -1,1 +1,5 @@
 /* pages/senMessage/senMessage.wxss */
+.row{
+ border-bottom: 100px
+
+}

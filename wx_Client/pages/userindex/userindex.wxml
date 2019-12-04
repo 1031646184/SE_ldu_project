@@ -2,7 +2,7 @@
 <van-tabs  bind:click="onClick" color = "#5555DB" sticky = "{{true}}">  
 
   <van-tab title="我接收的通知">
-
+      <block>
       <wux-wing-blank size="default">
           <wux-card title="任务1" extra="未读" actions="{{ acceptactions }}" bind:action="onAction">
             <view   slot="body" >内容不错</view>
@@ -10,7 +10,7 @@
           </wux-card>
       </wux-wing-blank>
       <van-divider />
-      
+      </block>
    
   </van-tab>
 
@@ -49,13 +49,7 @@
 
 </van-tabs>
 <van-divider contentPosition="center">只有这么多啦！</van-divider>
-<van-tabbar active="{{ active }}" bind:change="onChange" active-color = "#5555DB">
-  <van-tabbar-item icon="wap-home-o" info="3" >
-    主页
-  </van-tabbar-item>
-  <van-tabbar-item icon="comment-o">发送通知</van-tabbar-item>
-  <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
-</van-tabbar>
+
 
 
 

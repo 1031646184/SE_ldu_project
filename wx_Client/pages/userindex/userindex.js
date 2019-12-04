@@ -17,7 +17,6 @@ Page({
   data: {
      i :0,
     container: null,
-    active: 0,
     obj: [],  
     /*notice:({
       publisher_id:"", //发布者id
@@ -51,7 +50,6 @@ Page({
     console.log('onAction', e.detail)
   },
 
-  
   /***增加组件 */
   onTapAdd: function (e) {
     //console.log(this.ar[1]);
@@ -100,9 +98,7 @@ Page({
     
   },
 
-  onChange(event) {
-    this.setData({ active: event.detail });
-  },
+
   onReady() {
     this.setData({
       container: () => wx.createSelectorQuery().select('#container')
@@ -174,8 +170,6 @@ Page({
 
   analysisRes: function () { //解析收到的数据
     var str = '{"status":1,"content":{ "task1": {"publisher_id": "001", "title": "title1", "description": "description", "start_date": "2019-11 - 25 11: 45: 11", "end_date": "2019-11 - 25 11: 45: 11", "attachments_id": "attachments_id", "submit_attachments": 11}, "task2": {"publisher_id": "001", "title": "title2", "description": "description", "start_date": "2019-11 - 25 11: 45: 57", "end_date": "2019-11 - 25 11: 45: 57", "attachments_id": "attachments_id", "submit_attachments": 11}, "task3": {"publisher_id": "001", "title": "title3", "description": "description", "start_date": "2019-11 - 25 11: 47: 08", "end_date": "2019-11 - 25 11: 47: 08", "attachments_id": "attachments_id", "submit_attachments": 11} }}';
-
-    //var st = '{ "bar": "property", "baz": 3 }';
     var jsonStr,jsonObject;
     var jsObject = JSON.parse(str);    //转换为json对象
     //console.log(jsObject);
@@ -186,9 +180,10 @@ Page({
       jsonStr = JSON.stringify(jsObject[key]);
       jsonObject = JSON.parse(jsonStr);
       //console.log(jsonObject); //jsonObject {key0:v,key1:v}
-      myArray.push(jsonObject);
+      //myArray.push(jsonObject);
 
       for (var k in jsonObject) {
+        myArray.push(jsonObject[k]);
         console.log(jsonObject[k]);
       }
     }  
@@ -207,16 +202,14 @@ Page({
         }
       }
       var sendmsg = msg;
-
   },
-
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.analysisRes();
     this.test1();
+    
   },
 
   /**
@@ -230,7 +223,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getTabBar().init(0);
+    console.log(123)
   },
 
   /**

@@ -1,11 +1,14 @@
 {
-  
+ 
+
+
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/userindex/userindex",
     "pages/login/login",
-    "pages/senMessage/senMessage"
+    "pages/userindex/userindex",
+    "pages/senMessage/senMessage",
+    "pages/setting/setting"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -14,6 +17,23 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "custom": true,
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "backgroundColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/userindex/userindex"
+      },
+      {
+        "pagePath": "pages/senMessage/senMessage"
+      },
+      {
+        "pagePath": "pages/setting/setting"
+      }
+    ]
+  },
 
   "usingComponents": {
     "van-tabbar": "../../dist/tabbar/index",
