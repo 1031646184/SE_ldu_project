@@ -170,9 +170,9 @@ Page({
     var scmd = new Array('getTaskInf', 'logOn', 'logIn', 'pushNotice') //存放命令
     var contobj;
     if (cmd =='pushNotice'){ //构造发送通知的请求
-      contobj = '{ "publisher_id": "'+clientid+'", "title": "'+content[0]+'", "description": "'+content[1]+'", "start_date": "2019-11 - 25 11: 45: 11", "end_date": "2019-11 - 25 11: 45: 11", "attachments_id": "attachments_id", "submit_attachments": 11 }';
+        contobj = '{ "publisher_id": "'+clientid+'", "title": "'+content[0]+'", "description": "'+content[1]+'", "start_date": "2019-11 - 25 11: 45: 11", "end_date": "2019-11 - 25 11: 45: 11", "attachments_id": "attachments_id", "submit_attachments": 11 }';
     }else if(cmd =='getTaskInf'){//构造获取任务信息的请求
-      contobj = 'null';
+        contobj = 'null';
     };
     var obj = { userid: clientid, cmd: cmd, content: contobj }; //构造发送的对象
     var str = JSON.stringify(obj);//转化为字符串
