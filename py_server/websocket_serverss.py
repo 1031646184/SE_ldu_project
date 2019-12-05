@@ -6,7 +6,7 @@ Created on Sat Nov 23 13:51:53 2019
 """
 from websocket_server import WebsocketServer
 import re
-from analysis import analysis
+from SAMsg import MsgFormat
 
 # 当新的客户端连接时会提示
 def new_client(client, server):
@@ -21,21 +21,18 @@ def client_left(client, server):
  
 # 接收客户端的信息。
 def message_received(client, server, message):
-    print("Client(%d) said: %s" % (client['id'], message))
-    anlays = analysis(message)
-    result = anlays.run()
-    if(result == 'err'):
-        print("sending err")
-        server.send_message(client,'err')
-    elif(result == 0):
-        print("sending ok")
-        server.send_message(client,'ok')
+    print("message_received:",message)
+    msg = MsgFormat()
+    sendMsg = msg.acceptMsgFormat(message)
+    print(sendMsg)
+    
+    server.send_message(client,sendMsg)
+    print('成功发送消息')
     
  
 if __name__ == '__main__':
     
-    
-    server = WebsocketServer(8080, "0.0.0.0")
+    server = WebsocketServer(8080, "192.168.2.248")
     server.set_fn_new_client(new_client)
     server.set_fn_client_left(client_left)
     server.set_fn_message_received(message_received)
