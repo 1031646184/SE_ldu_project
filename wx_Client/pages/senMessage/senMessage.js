@@ -1,12 +1,15 @@
 // pages/senMessage/senMessage.js
+var app = getApp();
 import { $wuxCalendar } from '../../wdist/index'
 import Dialog from '../../dist/dialog/dialog';
+var ws = require('../../trans/websocketUtil')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    pushNotice:({}),
     title:'',
     content:'',
     starttime:'',
@@ -37,7 +40,8 @@ Page({
       //on sucess
       var content = new Array(this.data.title,this.data.content);//content数组0：title 1：内容
       var cmd = 'pushNotice';
-      this.websocketSendRequest(cmd,content); //调用发送信息函数
+      ws.websocketSendRequest(cmd, content);
+      //this.websocketSendRequest(cmd,content); //调用发送信息函数
       console.log('内容:'+content)
     }).catch(() => {
       // on cancel
@@ -124,7 +128,7 @@ Page({
     })
   },
 
-
+/*
   websocketSendRequest: function (cmd,content) {
     console.log('调用websocketSendMessage成功')
     var clientid = '104';
@@ -179,7 +183,7 @@ Page({
     console.log(str);
     return str;
       
-  },
+  },*/
 
   /**
    * 生命周期函数--监听页面加载

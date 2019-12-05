@@ -1,206 +1,92 @@
-// pages/login/login.js
+var app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    show: false,
-    username:'',
-    password:'',
-    nickname:'',
-    name:'',
-    school_id:'',
-    birthday:'',
-    gender:'',
-    phone:'',
-    email:''
-  },
-  showPopup() {
-    this.setData({ show: true });
+    userid: '',
+    password: '',
+    host: '192.168.2.248',
+    port: '8080'
   },
 
-  onClose() {
-    this.setData({ show: false });
+  // 获取输入账号
+  useridInput: function (event) {
+    this.setData({
+      userid: event.detail.value
+    })
+    app.globalData.userid = this.data.userid
   },
 
-  onChangeUsername(e) {
+  // 获取输入密码
+  passwordInput: function (event) {
     this.setData({
-      username:e.detail,
+      password: event.detail.value
     })
-  },
-  onChangePassword(e) {
-    this.setData({
-      password: e.detail,
-    })
-  },
-  onChangeNickname(e){
-    this.setData({
-      nickname: e.detail,
-    })
-  },
-  onChangeName(e){
-    this.setData({
-      name: e.detail,
-    })
-  },
-  onChangeSchool_id(e){
-    this.setData({
-      school_id: e.detail,
-    })
-  },
-  onChangeBirthday(e){
-    this.setData({
-      birthday: e.detail,
-    })
-  },
-  onChangeGender(e){
-    this.setData({
-      gender: e.detail,
-    })
-  },
-  onChangePhone(e){
-    this.setData({
-      phone: e.detail,
-    })
-  },
-  onChangeEmail(e) {
-    this.setData({
-      email: e.detail,
-    })
+
   },
 
+  // 登录
+  login: function () {
+    console.log(this.data.password)
+    if (this.data.userid.length == 0 || this.data.password.length == 0) {
+      wx.showToast({
+        title: '用户名和密码不能为空',
+        icon: 'loading',
+        duration: 2000
+      })
+    } else {
+      // 这里修改成跳转的页面
+      if (this.connect()){
 
-                           
-  onClick:function(){
-    console.log(this.data.username);
-    console.log(this.data.password);
-    console.log(this.data.nickname);
-    console.log(this.data.name);
-    console.log(this.data.school_id);
-    console.log(this.data.birthday);
-    console.log(this.data.gender);
-    console.log(this.data.phone);
-    this.encodeStr();
-  },
+        wx.navigateTo({
+          url: '../userindex/userindex'
+        })
+        wx.showToast({
+          title: '登录成功',
+          icon: 'success',
+          duration: 2000
 
-  encodeStr:function(){
-    //var txt=new Array("<username>","<password>","<nickname>","<name>","<school_id>","<birthday>","<gender>","<phone>");
-    var label = new Array("username", "password", "nickname", "name", "school_id", "birthday", "gender", "phone","email");
-    var content = new Array(this.data.username,
-                            this.data.password,
-                            this.data.nickname,
-                            this.data.name,
-                            this.data.school_id,
-                            this.data.birthday,
-                            this.data.gender,
-                            this.data.phone,
-                            this.data.email
-        );
-    /*var str = txt[0]+this.data.username+"</>"+
-              txt[1]+this.data.password+"</>"+
-              txt[2]+this.data.nickname+"</>"+
-              txt[3]+this.data.name+"</>"+
-              txt[4]+this.data.school_id+"</>"+
-              txt[5]+this.data.birthday+"</>"+
-              txt[6]+this.data.gender+"</>"+
-              txt[7]+this.data.phone+"</>";
-
-    console.log(str);*/
-    this.encodeRequset(label,"logon",content); //
-  },
-
-  encodeRequset:function(str,cmd,content){
-
-    var req  = "<cmd>"+cmd+"</>";
-      for(var i=0;i<str.length;i++){
-        req += '<'+str[i]+'>'+content[i]+'</>';
+        })
       }
-      console.log(req); 
-      this.test1(req);
 
+      else{
+        wx.showToast({
+          title: '登录失败',
+          icon: 'false',
+          duration: 2000
+        })
+        wx.switchTab({
+          url: '../userindex/userindex' 
+        })
+      }
+
+    }
   },
-
-  test1: function (inr) {
+  connect: function () {
     wx.connectSocket({
-      url: 'ws://192.168.2.248:8080'
+      url: 'ws://' + this.data.host + ':' + this.data.port
     })
+    var inf = { 'userid': this.data.userid, 'cmd': 'login', 'content': { 'userid': this.data.userid, 'password': this.data.password } };
     wx.onSocketOpen(function (res) {
       console.log('WebSocket连接已打开！')
-      wx.sendSocketMessage({
-        data: inr
-      })
 
+      wx.sendSocketMessage({
+        data: JSON.stringify(inf)
+
+      })
     })
 
-
     wx.onSocketMessage(function (res) {
-      console.log(res)
-      wx.closeSocket({
 
-      })
+      wx.closeSocket()
+      console.log(res.data)
+      if (res.data == 'ok')
+        return true
+      else
+        return false
 
     })
 
     wx.onSocketClose(function (res) {
       console.log('WebSocket连接已关闭！')
     })
-  },
-
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-      
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

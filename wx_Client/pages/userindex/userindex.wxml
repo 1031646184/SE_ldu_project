@@ -1,11 +1,14 @@
 
 <van-tabs  bind:click="onClick" color = "#5555DB" sticky = "{{true}}">  
 
+
   <van-tab title="我接收的通知">
-      <block>
+  <button bindtap='onTapAdd'>添加input组件</button>
+ 
+      <block wx:for="{{getnotice}}"  wx:key="{{index}}" wx:for-index="index" wx:for-item="items">
       <wux-wing-blank size="default">
-          <wux-card title="任务1" extra="未读" actions="{{ acceptactions }}" bind:action="onAction">
-            <view   slot="body" >内容不错</view>
+          <wux-card title="{{items.title}}" extra="未读" actions="{{ acceptactions }}" bind:action="onAction">
+            <view   slot="body" >{{items.description}}</view>
             <view slot="footer">2019-12-02</view>
           </wux-card>
       </wux-wing-blank>
@@ -15,29 +18,15 @@
   </van-tab>
 
   <van-tab title="我发布的通知">
-  
+   <block wx:for="{{pushnotice}}"  wx:key="{{index}}" wx:for-index="index" wx:for-item="items">
       <wux-wing-blank size="default">
-          <wux-card title="任务1" extra="已读人数：56/80" actions="{{ actions }}" bind:action="onAction">
-            <view slot="body">卡片内容</view>
+          <wux-card title="{{items.title}}" extra="已读人数：56/80" actions="{{ actions }}" bind:action="onAction">
+            <view slot="body">{{items.description}}</view>
             <view slot="footer">2019-12-02</view>
           </wux-card>
       </wux-wing-blank>
       <van-divider />
-
-      <wux-wing-blank size="default">
-          <wux-card title="任务1" extra="已读人数" actions="{{ actions }}" bind:action="onAction">
-            <view slot="body">卡片内容</view>
-            <view slot="footer">尾部内容</view>
-          </wux-card>
-      </wux-wing-blank>
-      <van-divider />
-
-      <wux-wing-blank size="default">
-          <wux-card title="任务1" extra="已读人数" actions="{{ actions }}" bind:action="onAction">
-            <view slot="body">卡片内容</view>
-            <view slot="footer">尾部内容</view>
-          </wux-card>
-      </wux-wing-blank>
+  </block>
       <van-divider />
 
 

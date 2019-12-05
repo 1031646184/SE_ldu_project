@@ -35,7 +35,7 @@ Component({
       this.setData({
         active:i
       });
-    }
+	}
 
 	}
 });

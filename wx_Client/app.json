@@ -8,7 +8,8 @@
     "pages/login/login",
     "pages/userindex/userindex",
     "pages/senMessage/senMessage",
-    "pages/setting/setting"
+    "pages/setting/setting",
+    "pages/logon/logon"
   ],
   "window": {
     "backgroundTextStyle": "light",
