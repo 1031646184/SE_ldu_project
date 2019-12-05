@@ -1,23 +1,14 @@
 // pages/userindex/userindex.js
+var app = getApp();
 Page({
-  ar: new Array({
-    title: "新的通知1",
-    content: '1',
-    read: "未读",
-  }, {
-      title: "新的通知2",
-      content: '2',
-      read: "未读",
-    }, {
-      title: "新的通知3",
-      content: '3',
-      read: "未读",
-    }),
+  //ar: new Array({
+   // }),
 
   data: {
-     i :0,
+    clientid:'',
+    ar:[],
+    i :0,
     container: null,
-    active: 0,
     obj: [],  
     /*notice:({
       publisher_id:"", //发布者id
@@ -28,7 +19,8 @@ Page({
       attachments_id:'', // 附件地址
       submit_attachments:'' //附件标记
     })*/
-    notice:({}),
+    pushnotice:({}),
+    getnotice:({}),
     actions: [{
       type: 'default',
       bold:'true',
@@ -51,28 +43,27 @@ Page({
     console.log('onAction', e.detail)
   },
 
-  
   /***增加组件 */
   onTapAdd: function (e) {
     //console.log(this.ar[1]);
     //var i =0;
-    var stro = this.analysisRes(); //接受解析完返回的数组
-    console.log("stro:"+stro);
+    //var stro = this.analysisRes(); //接受解析完返回的数组
+    /*console.log("stro:"+stro);
     this.setData({
       notice:stro
-    })
+    })*/
     //console.log(typeof(this.data.notice));
-    console.log("notice:"+this.data.notice);
+    //console.log("notice:"+this.data.notice);
     this.updateTap();
-    console.log("后notice:"+this.data.notice);
+    //console.log("后notice:"+this.data.notice);
   },
   updateTap:function(){
     var temp = this.data.obj;
-    temp.push(this.data.notice);
+    temp.push(this.data.getnotice);
     this.setData({
       obj: temp
     })
-    //console.log("obj[0]:99999"+this.data.obj[0]);
+    console.log('obj[]'+this.data.obj);
   },
   /***** 删除组件，也可以修改删除指定组件*/  // temp[0] = notic
   onTapDel: function (e) { 
@@ -88,21 +79,19 @@ Page({
     //console.log(this.data.notice);
     //console.log(this.data.obj[0]);
     this.setData({
-      notice:this.data.obj[0]
+      getnotice:this.data.obj[0]
     })
-    console.log("updateTap前的notice:"+this.data.notice);
+    console.log("updateTap前的notice:"+this.data.getnotice);
     this.updateTap();
     //console.log(temp);
-    console.log("updateTap之后的notice:"+this.data.notice);
+    console.log("updateTap之后的notice:"+this.data.getnotice);
     /*this.setData({
       obj: temp
     })*/
     
   },
 
-  onChange(event) {
-    this.setData({ active: event.detail });
-  },
+
   onReady() {
     this.setData({
       container: () => wx.createSelectorQuery().select('#container')
@@ -135,88 +124,14 @@ Page({
 
   },
 
-  test1: function () {
-    wx.connectSocket({
-      url: 'ws://127.0.0.1:8080'
-    })
-    wx.onSocketOpen(function (res) {
-      console.log('WebSocket连接已打开！')
-      var clientid = '104';
-      var scmd = new Array('getTaskInf','logOn','logIn','pushNotice')
-      var contobj = '{ "publisher_id": "001", "title": "title1", "description": "description", "start_date": "2019-11 - 25 11: 45: 11", "end_date": "2019-11 - 25 11: 45: 11", "attachments_id": "attachments_id", "submit_attachments": 11 }'
-      //var contstr = JSON.stringify(contobj)
-
-      var obj = { userid: clientid, cmd: scmd[3], content: contobj}; //构造发送的对象
-
-      var str = JSON.stringify(obj)//转化为字符串
-
-
-      wx.sendSocketMessage({
-        data:str
-      })
-
-    })
-
-
-    wx.onSocketMessage(function (res) {
-      //this.analysisRes1(res.data)
-      //console.log(res)
-      wx.closeSocket({
-
-      })
-
-    })
-
-    wx.onSocketClose(function (res) {
-      console.log('WebSocket连接已关闭！')
-    })
-  },
-
-  analysisRes: function () { //解析收到的数据
-    var str = '{"status":1,"content":{ "task1": {"publisher_id": "001", "title": "title1", "description": "description", "start_date": "2019-11 - 25 11: 45: 11", "end_date": "2019-11 - 25 11: 45: 11", "attachments_id": "attachments_id", "submit_attachments": 11}, "task2": {"publisher_id": "001", "title": "title2", "description": "description", "start_date": "2019-11 - 25 11: 45: 57", "end_date": "2019-11 - 25 11: 45: 57", "attachments_id": "attachments_id", "submit_attachments": 11}, "task3": {"publisher_id": "001", "title": "title3", "description": "description", "start_date": "2019-11 - 25 11: 47: 08", "end_date": "2019-11 - 25 11: 47: 08", "attachments_id": "attachments_id", "submit_attachments": 11} }}';
-
-    //var st = '{ "bar": "property", "baz": 3 }';
-    var jsonStr,jsonObject;
-    var jsObject = JSON.parse(str);    //转换为json对象
-    //console.log(jsObject);
-    let myArray = [];
-    for (var key in jsObject) {
-      //console.log(key);
-      //console.log(jsObject[key]); //json对象的值
-      jsonStr = JSON.stringify(jsObject[key]);
-      jsonObject = JSON.parse(jsonStr);
-      //console.log(jsonObject); //jsonObject {key0:v,key1:v}
-      myArray.push(jsonObject);
-
-      for (var k in jsonObject) {
-        console.log(jsonObject[k]);
-      }
-    }  
-    console.log(myArray);
-
-    return myArray;
-  },
-
-  wxSendMsg:function(){ //参数msg 
-  cmd= new Array('pushNotice','getTaskInf');
-      msg = {
-        userid:'104',
-        cmd:cmd[0],
-        content:{
-
-        }
-      }
-      var sendmsg = msg;
-
-  },
+  
 
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.analysisRes();
-    this.test1();
+    
   },
 
   /**
@@ -230,7 +145,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getTabBar().init(0);
+    //var clientid = '104';
+    //var cmd = 'getTaskInf'
+    this.websocketSendRequest('getTaskInf','null')
+    //console.log('=======ss========'+ss)
   },
 
   /**
@@ -266,5 +185,118 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  websocketSendRequest:function(cmd,content) {
+    console.log('调用websocketSendMessage成功')
+    var clientid = app.globalData.userid;
+    var cmd = cmd;
+    var content =content;
+    console.log("contetn:"+content);
+    wx.connectSocket({
+      url: 'ws://192.168.2.248:8080'
+    })
+    var that = this;
+    wx.onSocketOpen(function (res) {
+      console.log('WebSocket连接已打开！')
+      //var that = this;
+      var sendStr = that.cmdHandle(clientid,cmd,content);
+      wx.sendSocketMessage({
+        data: sendStr
+      })
+      console.log('发送完毕');
+
+    })
+    wx.onSocketMessage(function (res) {
+      //this.analysisRes1(res.data)
+      console.log('接收消息成功');
+      console.log(res)
+      that.analysisRes('getTaskInfRes',res)
+      //console.log('taskInf'+taskInf)
+      
+      //console.log(res)
+      wx.closeSocket({
+
+      })
+
+    })
+    wx.onSocketClose(function (res) {
+      console.log('WebSocket连接已关闭！')
+    })
+
+    
+  },
+
+  
+  cmdHandle:function(clientid,cmd,content){ //构造发送的数据
+    console.log('-------------cmdHanle()-----------------');
+    var scmd = new Array('getTaskInf', 'logOn', 'logIn', 'pushNotice')
+    var contobj;
+    if (cmd =='pushNotice'){ //构造发送通知的请求
+      contobj = '{ "publisher_id": "'+clientid+'", "title": "'+content[0]+'", "description": "'+content[1]+'", "start_date": "2019-11 - 25 11: 45: 11", "end_date": "2019-11 - 25 11: 45: 11", "attachments_id": "attachments_id", "submit_attachments": 11 }';
+
+    }else if(cmd =='getTaskInf'){//构造获取任务信息的请求
+      contobj = 'null';
+    };
+
+    var obj = { userid: clientid, cmd: cmd, content: contobj }; //构造发送的对象
+    var str = JSON.stringify(obj);//转化为字符串
+    //console.log(str);
+    return str;
+      
+  },
+
+  analysisRes:function(cmd,mess) { //解析收到的数据
+    var clientid = app.globalData.userid;
+    //console.log(mess['data'])
+    //var mess = '{"status":1,"content":{ "task1": {"publisher_id": "001", "title": "title1", "description": "description", "start_date": "2019-11 - 25 11: 45: 11", "end_date": "2019-11 - 25 11: 45: 11", "attachments_id": "attachments_id", "submit_attachments": 11}, "task2": {"publisher_id": "001", "title": "title2", "description": "description", "start_date": "2019-11 - 25 11: 45: 57", "end_date": "2019-11 - 25 11: 45: 57", "attachments_id": "attachments_id", "submit_attachments": 11}, "task3": {"publisher_id": "001", "title": "title3", "description": "description", "start_date": "2019-11 - 25 11: 47: 08", "end_date": "2019-11 - 25 11: 47: 08", "attachments_id": "attachments_id", "submit_attachments": 11} }}';
+    var jsonStr,jsonObject;
+    if(cmd =='getTaskInfRes'){
+      var jsObject = JSON.parse(mess['data']);    //转换为json对象
+      //console.log(jsObject);
+      let gn = []; //接受的消息
+      let pn = []; //发布的消息
+      for (var key in jsObject) {
+        //console.log(key);
+        //console.log(jsObject[key]); //json对象的值
+        jsonStr = JSON.stringify(jsObject[key]);
+        //console.log(taskInf)
+        jsonObject = JSON.parse(jsonStr);
+
+
+        for (var k in jsonObject) {
+          if(jsonObject[k].publisher_id == clientid){
+            pn.push(jsonObject[k])
+          }
+          else{
+            gn.push(jsonObject[k]);
+          }
+          
+         // taskInf.push(jsonObject[k]);
+          console.log('IDIDIDIDIDI:'+jsonObject[k].publisher_id);
+        }
+      }  
+      this.setar(gn);
+      this.setpushnotice(pn);
+      console.log('myarray'+gn[0].title);
+      //taskInf = myArray.concat();
+      //return myArray;
+
+    }
+    else if(cmd=='pushNoticeRes'){
+
+
+    }
+  },
+  setar:function(mes){
+      this.setData({
+        getnotice:mes
+      })
+      //console.log('############'+this.data.notice[0].title)
+  },
+  setpushnotice:function(mes){
+      this.setData({
+        pushnotice:mes
+      })
   }
+
 })

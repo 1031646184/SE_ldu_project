@@ -1,37 +1,81 @@
-<!--pages/senMessage/senMessage.wxml-->
+<van-dialog id="van-dialog" />
+
+
+<van-nav-bar
+  title="发布通知"
+/>
 <van-cell-group>
-
   <van-field
-    value="{{ username }}"
+    value="{{title}}"
     required
     clearable
-    label="用户名"
+    label="标题"
     icon="question-o"
-    placeholder="请输入用户名"
+    placeholder="请输入标题"
     bind:click-icon="onClickIcon"
+    bind:input = "titleInput"
   />
+  </van-cell-group>
 
+<van-cell-group size ="large">
   <van-field
-    value="{{ message }}"
-    label="留言"
+    value="{{content}}"
+    label="内容"
     type="textarea"
-    placeholder="请输入留言"
+    placeholder="请输入通知详细内容"
     autosize
-    border="{{ false }}"
+    bind:change="contentInput"
+    
   />
-    <van-field
-    value="{{ username }}"
-    required
-    clearable
-    label="用户名"
-    icon="question-o"
-    placeholder="请输入用户名"
-    bind:click-icon="onClickIcon"
-  />
-  
 </van-cell-group>
-<van-divider />
-<van-cell title="展示弹出层" is-link bind:click="showPopup" />
+  
+<van-cell-group>
+<van-cell title="选择开始时间" is-link bind:click="showPopup" />
+
+<van-popup show="{{ show }}" bind:close="onClose" position="bottom" custom-style="height: 60%;">
+      <van-datetime-picker
+      type="datetime"
+      value="{{ currentDate }}"
+      min-date="{{ minDate }}"
+      max-date="{{ maxDate }}"
+      bind:input="onInput"
+      bind:confirm="onStartSuccess"
+      bind:cancel = "onClose"
+    />
+</van-popup>
+
+    <van-field
+    value="{{ starttime }}"
+    clearable
+    placeholder="                       请选择时间"
+  />
 
 
+  <van-cell title="选择截止时间" is-link bind:click="showPopup" />
+    <van-popup show="{{ show }}" bind:close="onClose"  position="bottom" custom-style="height: 60%;">
+    <van-datetime-picker
+      title = "年 月 日 时 分"
+      type="datetime"
+      value="{{ currentDate }}"
+      min-date="{{ minDate }}"
+      max-date="{{ maxDate }}"
+      bind:input="onInput"
+      bind:confirm="onEndSuccess"
+      bind:cancel = "onClose"
+      bind:change ="getValues"
+    />
+</van-popup>
+    <van-field
+    value="{{ endtime }}"
+    clearable
+    placeholder="                       请选择时间"
+  />
+</van-cell-group>
 
+
+<van-row >
+  <van-col span="12" offset="6"> <van-button round type="info" size= 'large' bind:click="push">发送通知</van-button> </van-col>
+</van-row>
+
+
+<van-dialog id="van-dialog" />

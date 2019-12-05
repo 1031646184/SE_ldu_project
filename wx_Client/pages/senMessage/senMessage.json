@@ -1,6 +1,21 @@
 {
   "usingComponents": {
     "van-field": "../../dist/field/index",
-    "van-popup": "../../dist/popup/index"
+    "van-popup": "../../dist/popup/index",
+    "wux-button": "../../wdist/button/index",
+    "wux-popup": "../../wdist/popup/index",
+    "van-cell": "../../dist/cell/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-panel": "../../dist/panel/index",
+    "van-datetime-picker": "../../dist/datetime-picker/index",
+    "wux-cell-group": "../../dist/cell-group/index",
+    "wux-cell": "../../dist/cell/index",
+    "wux-calendar": "../../dist/calendar/index",
+    "van-button": "../../dist/button/index",
+      "van-row": "../../dist/row/index",
+      "van-col": "../../dist/col/index",
+      "van-sticky": "../../dist/sticky/index",
+      "van-nav-bar": "../../dist/nav-bar/index",
+      "van-dialog": "../../dist/dialog/index"
   }
 }

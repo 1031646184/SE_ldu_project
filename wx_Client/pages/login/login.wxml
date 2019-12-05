@@ -1,109 +1,29 @@
 <!--pages/login/login.wxml-->
-<van-cell-group >
-  <van-field
-    value="{{ username }}"
-    required
-    clearable
-    label="学号"
-    placeholder="请输入学号"
-    bind:change="onChangeUsername"
-  />
 
-  <van-field
-    value="{{ password }}"
-    type="password"
-    clearable
-    label="密码"
-    placeholder="请输入密码"
-    required
-    border="{{ false }}"
-    bind:change="onChangePassword"
-  />
-
-   <van-field
-    value="{{ nickname }}"
-    clearable
-    label="昵称"
-    placeholder="请输入昵称"
-    required
-    border="{{ false }}"
-    bind:change="onChangeNickname"
-  />
-
-  <van-field
-    value="{{ name }}"
-    clearable
-    label="姓名"
-    placeholder="请输入姓名"
-    required
-    border="{{ false }}"
-    bind:change="onChangeName"
-  />
-
-  <van-field
-    value="{{ school_id }}"
-    label="学校"
-    placeholder="请输入所在学校"
-    required
-    border="{{ false }}"
-    bind:change="onChangeSchool_id"
-  />
-
-
-  <van-field
-    value="{{ birthday }}"
-    label="生日"
-    placeholder="请输入出生年月"
-    required
-    border="{{ false }}"
-    bind:change="onChangeBirthday"
-  />
-  
-
+<view class="container">
+  <view class="login-icon">
+    <image class="login-img" src="../../images/loginLog.jpg"></image>
+  </view>
+  <view class="login-from">
  
-
-  <van-field
-    value="{{ gender }}"
-    label="性别"
-    placeholder="请输入性别"
-    required
-    border="{{ false }}"
-    bind:change="onChangeGender"
-  />
-
-  <van-field
-    value="{{ phone }}"
-    clearable
-    label="手机号"
-    placeholder="请输入手机号码"
-    required
-    border="{{ false }}"
-    bind:change="onChangePhone"
-  />
-   <van-field
-    value="{{ email }}"
-    clearable
-    label="邮箱"
-    placeholder="请输入电子邮箱"
-    required
-    border="{{ false }}"
-    bind:change="onChangeEmail"
-  />
-   <van-field
-    value="{{ sms }}"
-    center
-    clearable
-    label="短信验证码"
-    placeholder="请输入短信验证码"
-    border="{{ false }}"
-    use-button-slot
-  >
-    <van-button slot="button" size="small" type="primary">发送验证码</van-button>
-  </van-field>
-</van-cell-group>
-
-<van-button type="primary" bind:click="onClick" >主要按钮</van-button>
-
-<van-cell title="展示弹出层" is-link bind:click="showPopup" />
-<van-popup show="{{ show }}"   position="top"
-  custom-style="height: 20%;"bind:close="onClose">内容</van-popup>
+    <!--账号-->
+    <view class="inputView">
+      <image class="nameImage" src="../../images/name.png"></image>
+      <label class="loginLab">账号</label>
+      <input class="inputText" placeholder="请输入账号" bindinput='useridInput' />
+    </view>
+    <view class="line"></view>
+ 
+    <!--密码-->
+    <view class="inputView">
+      <image class="keyImage" src="../../images/key.png"></image>
+      <label class="loginLab">密码</label>
+      <input class="inputText"  password="true" placeholder="请输入密码" bindinput='passwordInput' />
+    </view>
+ 
+    <!--按钮-->
+    <view class="loginBtnView">
+      <button class="loginBtn" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="login">登录</button>
+    </view>
+  </view>
+</view>
