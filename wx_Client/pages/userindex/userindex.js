@@ -193,7 +193,7 @@ Page({
     var content =content;
     console.log("contetn:"+content);
     wx.connectSocket({
-      url: 'ws://192.168.2.248:8080'
+      url: 'ws://49.233.169.186:8080'
     })
     var that = this;
     wx.onSocketOpen(function (res) {

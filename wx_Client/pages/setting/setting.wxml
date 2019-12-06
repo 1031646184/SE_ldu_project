@@ -1,2 +1,12 @@
-<!--pages/setting/setting.wxml-->
-<text>pages/setting/setting.wxml</text>
+<van-card
+
+  desc="朴素摸鱼"
+  title="摸鱼怪"
+  thumb="{{ imageURL }}"
+/>
+
+<van-cell title="个人资料" is-link />
+<van-cell title="失物招领平台" is-link />
+<van-cell title="我的社团" is-link  />
+<van-cell title="我的班级" is-link  />
+<van-cell title="通讯录" is-link />

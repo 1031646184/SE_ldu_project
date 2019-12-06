@@ -3,7 +3,7 @@ Page({
   data: {
     userid: '',
     password: '',
-    host: '192.168.2.248',
+    host: '49.233.169.186',
     port: '8080'
   },
 
