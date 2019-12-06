@@ -188,7 +188,7 @@ class DatabaseQuery:
             cur.close()
             print(res)
             if(res):
-                return 0
+                return 'ok'
             else:
                 return 'err'
         except Exception as e:

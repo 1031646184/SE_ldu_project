@@ -5,7 +5,6 @@ Created on Sat Nov 23 13:51:53 2019
 @author: dell
 """
 from websocket_server import WebsocketServer
-import re
 from SAMsg import MsgFormat
 
 # 当新的客户端连接时会提示
